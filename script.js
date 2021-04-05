@@ -1,7 +1,8 @@
 function makeBoard(num) {
+  // num is the length of a side
   document.getElementById('grid').style.gridTemplateRows = `repeat(${num}, 1fr)`;
   document.getElementById('grid').style.gridTemplateColumns = `repeat(${num}, 1fr)`;
-  for (i = 0; i < num * num; i++) {
+  for (let i = 0; i < num * num; i++) {
     const div = document.createElement('div');
     /* let textNode = document.createTextNode(i);
     div.appendChild(textNode); */
@@ -9,33 +10,33 @@ function makeBoard(num) {
     div.classList.add('item');
     document.getElementById('grid').appendChild(div);
   }
-  colorSquare();
+  addGridHoverListener();
 }
 
-function colorSquare() {
+function addGridHoverListener() {
   const divs = document.querySelectorAll('.item');
   divs.forEach((div) => {
-    div.addEventListener('mouseover', mouseOver);
+    div.addEventListener('mouseover', changeSquareColor);
   });
 }
 
-function mouseOver(event) {
+function changeSquareColor(event) {
   event.target.style.backgroundColor = 'lightblue';
 }
 
-function ClickAction(event) {
+function clickActions(event) {
   console.log('click');
   if (this.id === 'reset') {
     console.log('id = reset')
     resetBoard(event);
   } else if (this.id === 'resize') {
-    resizeBoard();
+    getResizeInput();
   }
 }
 
-function resizeBoard() {
+function getResizeInput() {
   console.log('resize board function');
-  let square = parseInt(prompt('Lenght of each side?', '4'));
+  const square = parseInt(prompt('Lenght of each side?', '5'));
   document.querySelectorAll('.item').forEach(e => e.remove());
   console.log(square);
   console.log(typeof(square));
@@ -50,20 +51,15 @@ function resetBoard(event) {
   });
 }
 
-let sideLength = 5;
+const sideLength = 5;
 makeBoard(sideLength);
 document.getElementById(`${sideLength}`).style.backgroundColor = 'pink';
-colorSquare();
+addGridHoverListener();
 
-function colorSquare() {
-  const divs = document.querySelectorAll('.item');
-  divs.forEach((div) => {
-    div.addEventListener('mouseover', mouseOver);
-  });
-}
+
 
 const btn = document.querySelectorAll('.btn');
 
-btn.forEach((bob) => {
-  bob.addEventListener('click', ClickAction);
+btn.forEach((button) => {
+  button.addEventListener('click', clickActions);
 });
