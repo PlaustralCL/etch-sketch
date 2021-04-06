@@ -1,5 +1,6 @@
 function makeBoard(num) {
   // num is the length of a side
+  gridColorArray = []; // clears all array elements for a fresh start
   document.getElementById('grid').style.gridTemplateRows = `repeat(${num}, 1fr)`;
   document.getElementById('grid').style.gridTemplateColumns = `repeat(${num}, 1fr)`;
   for (let i = 0; i < num * num; i++) {
@@ -49,9 +50,9 @@ function setColor(gridId) {
 
 function clickActions(event) {
   console.log('click');
-  if (this.id === 'reset') {
-    console.log('id = reset')
-    resetBoard(event);
+  if (this.id === 'clearBoard') {
+    console.log('id = clearBoard')
+    clearBoard(event);
   } else if (this.id === 'resize') {
       getResizeInput();
   } else if (this.id === 'rainbow') {
@@ -75,18 +76,18 @@ function getResizeInput() {
   makeBoard(square);
 }
 
-function resetBoard(event) {
+function clearBoard(event) {
   const divResets = document.querySelectorAll('.item');
   divResets.forEach((div) => {
-    div.style.backgroundColor = '';
+    div.style.backgroundColor = ''; // sets each div to white
   });
-  gridColorArray = [];
 }
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min) + min); 
+  //The maximum is exclusive and the minimum is inclusive
 }
 
 // Main conde
