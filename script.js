@@ -81,11 +81,13 @@ function clearBoard(event) {
   divResets.forEach((div) => {
     div.style.backgroundColor = ''; // sets each div to white
   });
+  //Reset all gridColorArray all back to white when the board is cleared
+  gridColorArray.forEach((element, index) => gridColorArray[index] = 255);
 }
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
-  max = Math.floor(max);
+  max = Math.floor(max); 
   return Math.floor(Math.random() * (max - min) + min); 
   //The maximum is exclusive and the minimum is inclusive
 }
