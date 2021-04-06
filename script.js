@@ -21,7 +21,21 @@ function addGridHoverListener() {
 }
 
 function changeSquareColor(event) {
-  event.target.style.backgroundColor = 'lightblue';
+  event.target.style.backgroundColor = setColor();
+}
+
+function setColor() {
+  switch (colorMode) {
+    case 'normal':
+      return 'lightblue';
+      break;
+    case 'rainbow':
+      return rainbowArray[getRandomInt(0,13)];
+      break;
+    default:
+      return 'crimson';
+
+  } 
 }
 
 function clickActions(event) {
@@ -31,7 +45,13 @@ function clickActions(event) {
     resetBoard(event);
   } else if (this.id === 'resize') {
     getResizeInput();
+  } else if (this.id === 'rainbow') {
+    colorMode = 'rainbow';
+    console.log(colorMode);    
+  } else if (this.id === 'defaultColor') {
+    colorMode = 'normal';
   }
+
 }
 
 function getResizeInput() {
@@ -41,7 +61,6 @@ function getResizeInput() {
   console.log(square);
   console.log(typeof(square));
   makeBoard(square);
-  
 }
 
 function resetBoard(event) {
@@ -51,12 +70,21 @@ function resetBoard(event) {
   });
 }
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
+// Main conde
 const sideLength = 5;
+const rainbowArray = ['aqua', 'blue', 'fuchsia', 'green', 'lime', 'maroon',
+    'navy', 'olive', 'purple', 'red', 'silver', 'teal', 'yellow'];
+const defaultColor = 'lightblue';
+let colorMode = 'normal';
 makeBoard(sideLength);
-document.getElementById(`${sideLength}`).style.backgroundColor = 'pink';
+
 addGridHoverListener();
-
-
 
 const btn = document.querySelectorAll('.btn');
 
