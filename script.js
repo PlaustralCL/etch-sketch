@@ -9,6 +9,7 @@ function makeBoard(num) {
     div.setAttribute('id', `${i}`);
     div.classList.add('item');
     document.getElementById('grid').appendChild(div);
+    gridColorArray.push(255); //rgb(255, 255, 255) is white
   }
   addGridHoverListener();
 }
@@ -21,16 +22,24 @@ function addGridHoverListener() {
 }
 
 function changeSquareColor(event) {
-  event.target.style.backgroundColor = setColor();
+  event.target.style.backgroundColor = setColor(event.target.id);
 }
 
-function setColor() {
+function setColor(gridId) {
   switch (colorMode) {
     case 'normal':
       return 'lightblue';
       break;
     case 'rainbow':
       return rainbowArray[getRandomInt(0,13)];
+      break;
+    case 'grey':
+      if (gridColorArray[gridId] > 0) {
+        gridColorArray[gridId] -= 25.5;
+      }
+      console.log('grid number = ' + gridId);
+      console.log('grid color = ' + Math.round(gridColorArray[gridId]));
+      return `rgb(${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])})`;
       break;
     default:
       return 'crimson';
@@ -44,12 +53,15 @@ function clickActions(event) {
     console.log('id = reset')
     resetBoard(event);
   } else if (this.id === 'resize') {
-    getResizeInput();
+      getResizeInput();
   } else if (this.id === 'rainbow') {
-    colorMode = 'rainbow';
-    console.log(colorMode);    
+      colorMode = 'rainbow';
+      console.log(colorMode);    
   } else if (this.id === 'defaultColor') {
-    colorMode = 'normal';
+      colorMode = 'normal';
+  } else if (this.id === 'greyScale') {
+    colorMode = 'grey';
+    console.log(colorMode);  
   }
 
 }
@@ -66,8 +78,9 @@ function getResizeInput() {
 function resetBoard(event) {
   const divResets = document.querySelectorAll('.item');
   divResets.forEach((div) => {
-  div.style.backgroundColor = '';
+    div.style.backgroundColor = '';
   });
+  gridColorArray = [];
 }
 
 function getRandomInt(min, max) {
@@ -82,6 +95,7 @@ const rainbowArray = ['aqua', 'blue', 'fuchsia', 'green', 'lime', 'maroon',
     'navy', 'olive', 'purple', 'red', 'silver', 'teal', 'yellow'];
 const defaultColor = 'lightblue';
 let colorMode = 'normal';
+let gridColorArray = [];
 makeBoard(sideLength);
 
 addGridHoverListener();
