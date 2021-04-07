@@ -1,3 +1,9 @@
+.body {
+  background-color: #404040; /* #404040 dark grey */
+  color: #05d5fc;
+  text-shadow: 0 0 0.4em #05d5fc;
+  font-family: sans-serif;
+}
 .flex-wrapper {
   display: flex;
   flex-direction: column;
@@ -10,17 +16,38 @@
   width: 500px;
   height: 500px;
   display: grid;
- 
   border-style: solid;
-  border-color: red;
+  border-width: 20px;
+  border-color: #009EC3;
 }
 
 .item {
   border-style: solid;
+  border-color: #404040;
   border-width: 1px;
-  text-align: center;   
+  background-color: #f7f7f7;
+  text-align: center;
+
 }
 
 .btn {
+  width: 85px;
   margin: 10px;
+  padding: 5px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  background-color: #d8dee9;
+  color: black;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #eceff4;
+}
+
+.btn:focus {
+  box-shadow: 0 0 7px 3px #00B0FF;
+  border-color: #00B0FF;
+  
 }
