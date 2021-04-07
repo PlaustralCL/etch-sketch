@@ -34,6 +34,9 @@ function setColor(gridId) {
     case 'rainbow':
       return rainbowArray[getRandomInt(0,13)];
       break;
+    case 'erase':
+      return '#f7f7f7';
+      break;
     case 'grey':
       if (gridColorArray[gridId] > 0) {
         gridColorArray[gridId] -= 25.5;
@@ -43,7 +46,8 @@ function setColor(gridId) {
       return `rgb(${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])})`;
       break;
     default:
-      return 'crimson';
+    console.log('%cNo color selection found: setColor()', 'corlor: red');  
+    return 'crimson';
 
   } 
 }
@@ -63,13 +67,15 @@ function clickActions(event) {
   } else if (this.id === 'greyScale') {
     colorMode = 'grey';
     console.log(colorMode);  
+  } else if (this.id === 'erase') {
+    colorMode = 'erase';
   }
 
 }
 
 function getResizeInput() {
   console.log('resize board function');
-  const square = parseInt(prompt('Lenght of each side?', '5'));
+  const square = parseInt(prompt('Lenght of each side?', '10'));
   document.querySelectorAll('.item').forEach(e => e.remove());
   console.log(square);
   console.log(typeof(square));
@@ -79,7 +85,7 @@ function getResizeInput() {
 function clearBoard(event) {
   const divResets = document.querySelectorAll('.item');
   divResets.forEach((div) => {
-    div.style.backgroundColor = ''; // sets each div to white
+    div.style.backgroundColor = ''; // sets each div to the default for class .item
   });
   //Reset all gridColorArray all back to white when the board is cleared
   gridColorArray.forEach((element, index) => gridColorArray[index] = 255);
@@ -93,7 +99,7 @@ function getRandomInt(min, max) {
 }
 
 // Main conde
-const sideLength = 5;
+const sideLength = 10; //set initial value for pixel (square) size
 const rainbowArray = ['aqua', 'blue', 'fuchsia', 'green', 'lime', 'maroon',
     'navy', 'olive', 'purple', 'red', 'silver', 'teal', 'yellow'];
 const defaultColor = 'lightblue';

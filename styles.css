@@ -1,3 +1,9 @@
+/* Design information
+    drawing area background color (.item) - #f7f7f7
+    drawing area border color (.grid) - #009EC3
+    text color - #05d5fc
+*/
+
 .body {
   background-color: #404040; /* #404040 dark grey */
   color: #05d5fc;
@@ -15,6 +21,7 @@
 .grid {
   width: 500px;
   height: 500px;
+  margin: 10px;
   display: grid;
   border-style: solid;
   border-width: 20px;
@@ -35,19 +42,21 @@
   margin: 10px;
   padding: 5px;
   border-style: solid;
-  border-color: black;
+  border-color: #05d5fc;
   border-radius: 5px;
   background-color: #d8dee9;
-  color: black;
+  background-color: black; /* #404040 dark grey */
+  color: #05d5fc;
+  text-shadow: 0 0 0.4em #05d5fc;
   font-size: 14px;
 }
 
 .btn:hover {
-  background-color: #eceff4;
+  background-color: rgb(0,0,0,.3);
 }
 
 .btn:focus {
-  box-shadow: 0 0 7px 3px #00B0FF;
-  border-color: #00B0FF;
+  box-shadow: 0 0 7px 3px white;
+  border-color: white;
   
 }
