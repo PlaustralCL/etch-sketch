@@ -1,6 +1,14 @@
+.flex-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
 .grid {
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   display: grid;
  
   border-style: solid;
