@@ -89,3 +89,33 @@
   border-color: white;
   
 }
+
+
+/**** Modal ****/
+.modalContainer {
+  position: fixed; /* keeps the modal container at the the top */
+  top: 0;
+  left: 0;
+  width: 100%; /* takes up the full screen */
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,.6);
+}
+  
+  .form--modal {
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  width: 200px;
+  padding: 10px;
+  border-style: solid;
+  background-color: white;
+  text-align: center;
+}   
+
+  .input--modal {
+  margin: 10px;
+  text-align: center;
+}

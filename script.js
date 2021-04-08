@@ -58,7 +58,7 @@ function clickActions(event) {
     console.log('id = clearBoard')
     clearBoard(event);
   } else if (this.id === 'resize') {
-      getResizeInput();
+      launchModal();
   } else if (this.id === 'rainbow') {
       colorMode = 'rainbow';
       console.log(colorMode);    
@@ -69,17 +69,39 @@ function clickActions(event) {
     console.log(colorMode);  
   } else if (this.id === 'erase') {
     colorMode = 'erase';
+  } else if (this.id === 'modalButton') {
+    getResizeInput(event);
   }
-
 }
 
-function getResizeInput() {
+function keyEvent(event) {
+  if (event.code == 'Escape') {
+    console.log('escape!');
+    document.getElementById('modalContainer').style.display = 'none';
+  }  
+}
+
+function launchModal() {
+  console.log('launchModal');
+  document.getElementById('modalContainer').style.display = 'flex';
+  document.getElementById('squares').focus(); // puts the focus in the input box
+}
+
+
+function getResizeInput(event) {
   console.log('resize board function');
-  const square = parseInt(prompt('Lenght of each side?', '10'));
-  document.querySelectorAll('.item').forEach(e => e.remove());
-  console.log(square);
-  console.log(typeof(square));
-  makeBoard(square);
+  event.preventDefault(); // prevents the form from trying to submit to a server
+  const squares = parseInt(document.getElementById('squares').value);
+  console.log(typeof(squares));
+  console.log(squares);
+  document.getElementById('squares').value = '';
+  
+  document.getElementById('modalContainer').style.display = 'none'; // hides the modal again
+/*   const squares = parseInt(prompt('Lenght of each side?', '10'));*/
+  document.querySelectorAll('.item').forEach(e => e.remove()); // removes all divs that were there before
+  console.log({squares});
+  console.log(typeof(squares));
+  makeBoard(squares);
 }
 
 function clearBoard(event) {
@@ -114,3 +136,15 @@ const btn = document.querySelectorAll('.btn');
 btn.forEach((button) => {
   button.addEventListener('click', clickActions);
 });
+
+document.onclick = function(event) {
+  // closes modal if user clicks outside of the form
+  console.log(event.target.id);
+  if (event.target.id === 'modalContainer') {
+    document.getElementById('modalContainer').style.display = 'none';
+  }
+}
+
+document.addEventListener('keydown', keyEvent);
+
+
