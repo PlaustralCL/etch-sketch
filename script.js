@@ -89,21 +89,17 @@ function launchModal() {
 
 function getResizeInput(event) {
   event.preventDefault(); // prevents the form from trying to submit to a server
-  document.getElementById('input-error').textContent = '';
+  document.getElementById('input-error').textContent = ''; //Clears any pre-existing error messaage
+  document.getElementById('squares').value = ''; // clears the input box
+
   const squares = parseInt(document.getElementById('squares').value);
-  
   if (squares < 1 || squares > 100) {
     document.getElementById('input-error').textContent = 'Please pick a number betwen 1 and 100';
     return;
   }
-
-  
-    document.getElementById('modalContainer').style.display = 'none'; // hides the modal again
-    document.querySelectorAll('.item').forEach(e => e.remove()); // removes all divs that were there before
-    makeBoard(squares);
-  
-  
-  document.getElementById('squares').value = ''; // clears the input box
+  document.getElementById('modalContainer').style.display = 'none'; // hides the modal again
+  document.querySelectorAll('.item').forEach(e => e.remove()); // removes all divs that were there before
+  makeBoard(squares);
 }
 
 function clearBoard(event) {
