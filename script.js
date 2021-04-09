@@ -35,14 +35,13 @@ function setColor(gridId) {
       return rainbowArray[getRandomInt(0,13)];
       break;
     case 'erase':
+      gridColorArray[gridId] = 255;
       return '#f7f7f7';
       break;
     case 'grey':
       if (gridColorArray[gridId] > 0) {
         gridColorArray[gridId] -= 25.5;
       }
-      console.log('grid number = ' + gridId);
-      console.log('grid color = ' + Math.round(gridColorArray[gridId]));
       return `rgb(${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])})`;
       break;
     default:
@@ -89,19 +88,22 @@ function launchModal() {
 
 
 function getResizeInput(event) {
-  console.log('resize board function');
   event.preventDefault(); // prevents the form from trying to submit to a server
+  document.getElementById('input-error').textContent = '';
   const squares = parseInt(document.getElementById('squares').value);
-  console.log(typeof(squares));
-  console.log(squares);
-  document.getElementById('squares').value = '';
   
-  document.getElementById('modalContainer').style.display = 'none'; // hides the modal again
-/*   const squares = parseInt(prompt('Lenght of each side?', '10'));*/
-  document.querySelectorAll('.item').forEach(e => e.remove()); // removes all divs that were there before
-  console.log({squares});
-  console.log(typeof(squares));
-  makeBoard(squares);
+  if (squares < 1 || squares > 100) {
+    document.getElementById('input-error').textContent = 'Please pick a number betwen 1 and 100';
+    return;
+  }
+
+  
+    document.getElementById('modalContainer').style.display = 'none'; // hides the modal again
+    document.querySelectorAll('.item').forEach(e => e.remove()); // removes all divs that were there before
+    makeBoard(squares);
+  
+  
+  document.getElementById('squares').value = ''; // clears the input box
 }
 
 function clearBoard(event) {
