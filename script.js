@@ -32,7 +32,7 @@ function setColor(gridId) {
       return 'lightblue';
       break;
     case 'rainbow':
-      return rainbowArray[getRandomInt(0,13)];
+      return rainbowArray[getRandomInt(0,39)];
       break;
     case 'erase':
       gridColorArray[gridId] = 255;
@@ -125,7 +125,13 @@ function getRandomInt(min, max) {
 // Main conde
 const sideLength = 10; //set initial value for pixel (square) size
 const rainbowArray = ['aqua', 'blue', 'fuchsia', 'green', 'lime', 'maroon',
-    'navy', 'olive', 'purple', 'red', 'silver', 'teal', 'yellow'];
+    'navy', 'olive', 'purple', 'red', 'silver', 'teal', 'yellow', 'bisque',
+    'blueviolet', 'cadetblue', 'chartreuse', 'crimson', 'cyan', 'darkcyan',
+    'darksalmon', 'darkseagreen', 'deepskyblue', 'goldenrod', 'lightcoral',
+    'lightpink', 'lightsalmon', 'lightseagreen', 'lightskyblue', 'lime',
+    'magenta', 'mediumorchid', 'mediumspringgreen', 'mistyrose',
+    'mediumslateblue', 'orangered', 'orchid', 'palegoldenrod', 'palegreen',
+     'paleturquoise'];
 const defaultColor = 'lightblue';
 let colorMode = 'normal';
 let gridColorArray = [];
