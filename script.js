@@ -10,7 +10,7 @@ function makeBoard(num) {
     div.setAttribute('id', `${i}`);
     div.classList.add('item');
     document.getElementById('grid').appendChild(div);
-    gridColorArray.push(255); //rgb(255, 255, 255) is white
+    gridColorArray.push(247); //rgb(247, 247, 247) is the background color for .item
   }
   addGridHoverListener();
 }
@@ -35,12 +35,12 @@ function setColor(gridId) {
       return rainbowArray[getRandomInt(0,39)];
       break;
     case 'erase':
-      gridColorArray[gridId] = 255;
+      gridColorArray[gridId] = 247;
       return '#f7f7f7';
       break;
     case 'grey':
       if (gridColorArray[gridId] > 0) {
-        gridColorArray[gridId] -= 25.5;
+        gridColorArray[gridId] -= 24.7;
       }
       return `rgb(${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])})`;
       break;
