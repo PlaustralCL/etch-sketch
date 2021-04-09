@@ -12,7 +12,12 @@ function makeBoard(num) {
     document.getElementById('grid').appendChild(div);
     gridColorArray.push(247); //rgb(247, 247, 247) is the background color for .item
   }
+  showGridSize(num);
   addGridHoverListener();
+}
+function showGridSize(size) {
+  document.getElementById('gridSize').textContent = `Grid size: ${size} x ${size}`;
+  return;
 }
 
 function addGridHoverListener() {
