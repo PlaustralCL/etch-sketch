@@ -87,7 +87,9 @@
 .btn:focus {
   box-shadow: 0 0 7px 3px white;
   border-color: white;
+  
 }
+
 
 /**** Modal ****/
 .modalContainer {
@@ -102,7 +104,7 @@
   background-color: rgba(0,0,0,.6);
 }
   
-.form--modal {
+  .form--modal {
   position: absolute;
   z-index: 1;
   top: 20%;
@@ -117,7 +119,7 @@
   text-align: center;
 }   
 
-.input--modal {
+  .input--modal {
   margin: 10px;
   text-align: center;
 }
