@@ -13,8 +13,10 @@ function makeBoard(num) {
     gridColorArray.push(247); //rgb(247, 247, 247) is the background color for .item
   }
   showGridSize(num);
+  resetFocus();
   addGridHoverListener();
 }
+
 function showGridSize(size) {
   document.getElementById('gridSize').textContent = `Grid size: ${size} x ${size}`;
   return;
@@ -43,7 +45,7 @@ function setColor(gridId) {
       gridColorArray[gridId] = 247;
       return '#f7f7f7';
       break;
-    case 'grey':
+    case 'greyScale':
       if (gridColorArray[gridId] > 0) {
         gridColorArray[gridId] -= 24.7;
       }
@@ -66,14 +68,14 @@ function clickActions(event) {
   } else if (this.id === 'rainbow') {
       colorMode = 'rainbow';
       console.log(colorMode);    
-  } else if (this.id === 'defaultColor') {
+  } else if (this.id === 'normal') {
       colorMode = 'normal';
   } else if (this.id === 'greyScale') {
-    colorMode = 'grey';
+    colorMode = 'greyScale';
     console.log(colorMode);  
   } else if (this.id === 'erase') {
     colorMode = 'erase';
-  } else if (this.id === 'modalButton') {
+  } else if (this.id === 'submitResize') {
     getResizeInput(event);
   }
 }
@@ -102,12 +104,10 @@ function getResizeInput(event) {
     return;
   }
 
-  
-    document.getElementById('modalContainer').style.display = 'none'; // hides the modal again
-    document.querySelectorAll('.item').forEach(e => e.remove()); // removes all divs that were there before
-    makeBoard(squares);
-  
-  
+  document.getElementById('modalContainer').style.display = 'none'; // hides the modal again
+  // remove all divs that were previously created in the drawing area
+  document.querySelectorAll('.item').forEach(e => e.remove()); 
+  makeBoard(squares);
   document.getElementById('squares').value = ''; // clears the input box
 }
 
@@ -117,7 +117,9 @@ function clearBoard(event) {
     div.style.backgroundColor = ''; // sets each div to the default for class .item
   });
   //Reset all gridColorArray all back to white when the board is cleared
-  gridColorArray.forEach((element, index) => gridColorArray[index] = 255);
+  gridColorArray.forEach((element, index) => gridColorArray[index] = 247);
+  resetFocus();
+  console.log({colorMode});
 }
 
 function getRandomInt(min, max) {
@@ -125,6 +127,13 @@ function getRandomInt(min, max) {
   max = Math.floor(max); 
   return Math.floor(Math.random() * (max - min) + min); 
   //The maximum is exclusive and the minimum is inclusive
+}
+
+function resetFocus() {
+  //Reset focus to show color mode after clear or resize
+  console.log('resetFocus');
+  document.getElementById(colorMode).focus();
+  return;
 }
 
 // Main conde
@@ -152,7 +161,6 @@ btn.forEach((button) => {
 
 document.onclick = function(event) {
   // closes modal if user clicks outside of the form
-  console.log(event.target.id);
   if (event.target.id === 'modalContainer') {
     document.getElementById('modalContainer').style.display = 'none';
   }
