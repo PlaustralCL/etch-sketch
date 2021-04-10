@@ -36,7 +36,7 @@ function changeSquareColor(event) {
 function setColor(gridId) {
   switch (colorMode) {
     case 'normal':
-      return 'lightblue';
+      return 'black';
       break;
     case 'rainbow':
       return rainbowArray[getRandomInt(0,39)];
@@ -146,7 +146,6 @@ const rainbowArray = ['aqua', 'blue', 'fuchsia', 'green', 'lime', 'maroon',
     'magenta', 'mediumorchid', 'mediumspringgreen', 'mistyrose',
     'mediumslateblue', 'orangered', 'orchid', 'palegoldenrod', 'palegreen',
      'paleturquoise'];
-const defaultColor = 'lightblue';
 let colorMode = 'normal';
 let gridColorArray = [];
 makeBoard(sideLength);
