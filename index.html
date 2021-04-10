@@ -27,28 +27,23 @@
 
       <!-- This is the div to hold all the divs created by js -->
       <div id="grid" class="grid"> </div> 
+
       <div>
         <button id="clearBoard" class="btn">Clear</button>
         <button id="resize" class="btn">Resize</button>
       </div>
-
-  </div> <!-- End of flex container -->
+    </div> <!-- End of flex wrapper -->
 
     <!-- Modal -->
-  <div id="modalContainer" class="modalContainer">
-    <form id="form" class="form--modal">
-      <p>How many squares <br> per side? 1 - 100</p>
-      <p id="input-error" class="error"></p>
-      <label for="squares" class="label">Squares:</label>
-      <input id="squares" class="input--modal" name="squares" type="number" min="1" max="100">           
-      <button id="submitResize" class="btn">Submit</button>
-    </form>
-  </div>
-    
-   
-    
-    
-    
+    <div id="modalContainer" class="modalContainer">
+      <form id="form" class="form--modal">
+        <p>How many squares <br> per side? 1 - 100</p>
+        <p id="input-error" class="error"></p>
+        <label for="squares" class="label">Squares:</label>
+        <input id="squares" class="input--modal" name="squares" type="number" min="1" max="100">           
+        <button id="submitResize" class="btn">Submit</button>
+      </form>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>

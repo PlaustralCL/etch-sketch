@@ -36,8 +36,6 @@
   }
 }
 
-
-
 .grid {
   width: 500px;
   height: 500px;
@@ -54,7 +52,6 @@
     height: 250px;
     border-width: 10px;
   }
-
 }
 
 .item {
@@ -104,7 +101,6 @@
   
 }
 
-
 /**** Modal ****/
 .modalContainer {
   position: fixed; /* keeps the modal container at the the top */
@@ -118,7 +114,7 @@
   background-color: rgba(0,0,0,.6);
 }
   
-  .form--modal {
+.form--modal {
   position: absolute;
   z-index: 1;
   top: 20%;
@@ -133,7 +129,7 @@
   text-align: center;
 }   
 
-  .input--modal {
+.input--modal {
   margin: 10px;
   text-align: center;
 }
