@@ -58,12 +58,26 @@
 }
 
 .item {
-  border-style: solid;
-  border-color: #404040;
-  border-width: 1px;
+  border-style: none;
   background-color: #f7f7f7;
   text-align: center;
+  animation-name: fadeline;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+}
 
+@keyframes fadeline {
+  from {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+  }
+
+  to {
+    border-style: solid;
+    border-color: #f7f7f7;
+    border-width: 1px;
+  }
 }
 
 .btn {
