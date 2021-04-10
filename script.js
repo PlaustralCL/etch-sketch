@@ -15,6 +15,7 @@ function makeBoard(num) {
   showGridSize(num);
   resetFocus();
   addGridHoverListener();
+  return;
 }
 
 function showGridSize(size) {
@@ -27,6 +28,7 @@ function addGridHoverListener() {
   divs.forEach((div) => {
     div.addEventListener('mouseover', changeSquareColor);
   });
+  return;
 }
 
 function changeSquareColor(event) {
@@ -52,8 +54,7 @@ function setColor(gridId) {
       return `rgb(${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])})`;
       break;
     default:
-    return 'crimson';
-
+      return 'crimson';
   } 
 }
 
@@ -73,17 +74,20 @@ function clickActions(event) {
   } else if (this.id === 'submitResize') {
     getResizeInput(event);
   }
+  return;
 }
 
 function keyEvent(event) {
   if (event.code == 'Escape') {
     document.getElementById('modalContainer').style.display = 'none';
   }  
+  return;
 }
 
 function launchModal() {
   document.getElementById('modalContainer').style.display = 'flex';
   document.getElementById('squares').focus(); // puts the focus in the input box
+  return;
 }
 
 
@@ -102,6 +106,7 @@ function getResizeInput(event) {
   document.querySelectorAll('.item').forEach(e => e.remove()); 
   makeBoard(squares);
   document.getElementById('squares').value = ''; // clears the input box
+  return;
 }
 
 function clearBoard(event) {
@@ -112,6 +117,7 @@ function clearBoard(event) {
   //Reset all gridColorArray all back to white when the board is cleared
   gridColorArray.forEach((element, index) => gridColorArray[index] = 247);
   resetFocus();
+  return;
 }
 
 function getRandomInt(min, max) {
