@@ -1,6 +1,8 @@
 # Description
 This is the Etch-a-Sketch project from [The Odin Project](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/etch-a-sketch-project).
 
+Link to the live version of my [Etch-a-Sketch project](https://plaustralcl.github.io/etch-sketch/).
+
 The main goals of the project were:
   * Create DOM elements (`div`) using javascript
   * Remove the elements as needed
