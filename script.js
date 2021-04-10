@@ -52,27 +52,22 @@ function setColor(gridId) {
       return `rgb(${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])}, ${Math.round(gridColorArray[gridId])})`;
       break;
     default:
-    console.log('%cNo color selection found: setColor()', 'corlor: red');  
     return 'crimson';
 
   } 
 }
 
 function clickActions(event) {
-  console.log('click');
   if (this.id === 'clearBoard') {
-    console.log('id = clearBoard')
     clearBoard(event);
   } else if (this.id === 'resize') {
       launchModal();
   } else if (this.id === 'rainbow') {
       colorMode = 'rainbow';
-      console.log(colorMode);    
   } else if (this.id === 'normal') {
       colorMode = 'normal';
   } else if (this.id === 'greyScale') {
     colorMode = 'greyScale';
-    console.log(colorMode);  
   } else if (this.id === 'erase') {
     colorMode = 'erase';
   } else if (this.id === 'submitResize') {
@@ -82,13 +77,11 @@ function clickActions(event) {
 
 function keyEvent(event) {
   if (event.code == 'Escape') {
-    console.log('escape!');
     document.getElementById('modalContainer').style.display = 'none';
   }  
 }
 
 function launchModal() {
-  console.log('launchModal');
   document.getElementById('modalContainer').style.display = 'flex';
   document.getElementById('squares').focus(); // puts the focus in the input box
 }
@@ -119,7 +112,6 @@ function clearBoard(event) {
   //Reset all gridColorArray all back to white when the board is cleared
   gridColorArray.forEach((element, index) => gridColorArray[index] = 247);
   resetFocus();
-  console.log({colorMode});
 }
 
 function getRandomInt(min, max) {
@@ -131,7 +123,6 @@ function getRandomInt(min, max) {
 
 function resetFocus() {
   //Reset focus to show color mode after clear or resize
-  console.log('resetFocus');
   document.getElementById(colorMode).focus();
   return;
 }
