@@ -28,14 +28,15 @@ function clearBoard(event) {
   });
   //Reset all gridColorArray all back to white when the board is cleared
   gridColorArray.forEach((element, index) => gridColorArray[index] = 247);
-  // resetFocus();
+  resetFocus();
   return;
 }
 
 function clickActions(event) {
   /** Clearing house for click actions. Based on the id that was clicked,
    * sets the colorMode. For clearBoard or resize clicks, redirects to the 
-   * properfuction.
+   * proper fuction. This function also adds and removes the visual color mode
+   * indicator to the buttons.
    */
   if (this.id === 'clearBoard' || this.id === 'resize' || this.id === 'submitResize') {
     switch(this.id) {
@@ -151,7 +152,7 @@ function makeBoard(num) {
   }
   showGridSize(num); 
   document.getElementById(colorMode).classList.add('btn--active');
-  // resetFocus(); 
+  resetFocus(); 
   addGridHoverListener(); 
   return;
 }
