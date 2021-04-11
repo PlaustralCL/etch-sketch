@@ -28,7 +28,7 @@ function clearBoard(event) {
   });
   //Reset all gridColorArray all back to white when the board is cleared
   gridColorArray.forEach((element, index) => gridColorArray[index] = 247);
-  resetFocus();
+  // resetFocus();
   return;
 }
 
@@ -40,18 +40,26 @@ function clickActions(event) {
   if (this.id === 'clearBoard') {
     clearBoard(event);
   } else if (this.id === 'resize') {
-      launchModal();
-  } else if (this.id === 'rainbow') {
-      colorMode = 'rainbow';
-  } else if (this.id === 'normal') {
-      colorMode = 'normal';
-  } else if (this.id === 'greyScale') {
-    colorMode = 'greyScale';
-  } else if (this.id === 'erase') {
-    colorMode = 'erase';
-  } else if (this.id === 'submitResize') {
-    getResizeInput(event);
-  }
+        launchModal();
+    } else if (this.id === 'submitResize') {
+        getResizeInput(event);
+    } else if (this.id === 'rainbow') {
+        document.getElementById(colorMode).classList.remove('btn--active');  
+        colorMode = 'rainbow';
+        document.getElementById(colorMode).classList.add('btn--active'); 
+    } else if (this.id === 'normal') {
+        document.getElementById(colorMode).classList.remove('btn--active');   
+        colorMode = 'normal';
+        document.getElementById(colorMode).classList.add('btn--active'); 
+   } else if (this.id === 'greyScale') {
+        document.getElementById(colorMode).classList.remove('btn--active'); 
+        colorMode = 'greyScale';
+        document.getElementById(colorMode).classList.add('btn--active'); 
+   } else if (this.id === 'erase') {
+        document.getElementById(colorMode).classList.remove('btn--active');   
+        colorMode = 'erase';
+        document.getElementById(colorMode).classList.add('btn--active'); 
+    } 
   return;
 }
 
@@ -130,7 +138,8 @@ function makeBoard(num) {
     gridColorArray.push(247); //rgb(247, 247, 247) is the background color for .item
   }
   showGridSize(num); 
-  resetFocus(); 
+  document.getElementById(colorMode).classList.add('btn--active');
+  // resetFocus(); 
   addGridHoverListener(); 
   return;
 }
