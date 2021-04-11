@@ -37,30 +37,42 @@ function clickActions(event) {
    * sets the colorMode. For clearBoard or resize clicks, redirects to the 
    * properfuction.
    */
-  if (this.id === 'clearBoard') {
-    clearBoard(event);
-  } else if (this.id === 'resize') {
+  if (this.id === 'clearBoard' || this.id === 'resize' || this.id === 'submitResize') {
+    switch(this.id) {
+      case 'clearBoard':
+        clearBoard(event);
+        break;
+      case 'resize':
         launchModal();
-    } else if (this.id === 'submitResize') {
+        break;
+      case 'submitResize':
         getResizeInput(event);
-    } else if (this.id === 'rainbow') {
-        document.getElementById(colorMode).classList.remove('btn--active');  
-        colorMode = 'rainbow';
-        document.getElementById(colorMode).classList.add('btn--active'); 
-    } else if (this.id === 'normal') {
-        document.getElementById(colorMode).classList.remove('btn--active');   
-        colorMode = 'normal';
-        document.getElementById(colorMode).classList.add('btn--active'); 
-   } else if (this.id === 'greyScale') {
-        document.getElementById(colorMode).classList.remove('btn--active'); 
-        colorMode = 'greyScale';
-        document.getElementById(colorMode).classList.add('btn--active'); 
-   } else if (this.id === 'erase') {
-        document.getElementById(colorMode).classList.remove('btn--active');   
-        colorMode = 'erase';
-        document.getElementById(colorMode).classList.add('btn--active'); 
-    } 
-  return;
+        break;        
+    }
+    return;
+  } else {
+      document.getElementById(colorMode).classList.remove('btn--active'); 
+      switch (this.id) {
+        case 'normal':
+          colorMode = 'normal';
+          break;
+        case 'rainbow':
+          colorMode = 'rainbow';
+          break;
+        case 'greyScale':
+          colorMode = 'greyScale';
+          break;
+        case 'erase':
+          colorMode = 'erase';
+          break;
+        default:
+          console.log('No color mode identified');
+          colorMode = 'normal';
+          break;
+      }
+      document.getElementById(colorMode).classList.add('btn--active'); 
+      return;
+    }
 }
 
 function getRandomInt(min, max) {
